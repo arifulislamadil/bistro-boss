@@ -26,11 +26,11 @@ const Menu = () => {
      <SectionTitle subHeading="Don't Miss" heading="Today's Offer"></SectionTitle>
      <MenuCategory items={offered}></MenuCategory>
      <SectionTitle subHeading="Don't Miss" heading="Today's Offer"></SectionTitle>
-     <MenuCategory items={desserts} title="Dessert" img={DessertImg}></MenuCategory>
+     <MenuCategory items={desserts} title="dessert" img={DessertImg}></MenuCategory>
      <SectionTitle subHeading="Don't Miss" heading="Today's Offer"></SectionTitle>
-     <MenuCategory items={pizza} title="Pizza" img={PizzaImg}></MenuCategory>
-     <MenuCategory items={salad} title="Salad" img={SaladImg}></MenuCategory>
-     <MenuCategory items={soup} title="Soup" img={SoupImg}></MenuCategory>
+     <MenuCategory items={pizza} title="pizza" img={PizzaImg}></MenuCategory>
+     <MenuCategory items={salad} title="salad" img={SaladImg}></MenuCategory>
+     <MenuCategory items={soup} title="soup" img={SoupImg}></MenuCategory>
     </div> 
   );
 };
