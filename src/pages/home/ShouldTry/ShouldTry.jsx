@@ -21,8 +21,8 @@ const ShouldTry = () => {
           <div className="py-4">
             <h2 className="font-bold text-xl">Caeser Salad</h2>
             <p>Lettuce, Eggs, Parmesan Cheese, Chicken</p>
-            <div className="card-actions justify-center">
-              <button className="btn btn-outline uppercase mt-4">
+            <div className="card-actions justify-center mt-4">
+              <button className="btn btn-outline border-0 border-b-4 bg-slate-200 border-orange-400">
                 Add to cart
               </button>
             </div>
@@ -35,8 +35,8 @@ const ShouldTry = () => {
           <div className="">
             <h2 className="font-bold text-xl mt-4">Life hack</h2>
             <p>How to park your car at your garage?</p>
-            <div className="card-actions justify-center">
-              <button className="btn btn-outline uppercase mt-4">
+            <div className="card-actions justify-center mt-4">
+              <button className="btn btn-outline border-0 border-b-4 bg-slate-200 border-orange-400">
                 Add to cart
               </button>
             </div>
@@ -50,7 +50,7 @@ const ShouldTry = () => {
             <h2 className="font-bold text-xl mt-4">Life hack</h2>
             <p>How to park your car at your garage?</p>
             <div className="card-actions justify-center mt-4">
-              <button className="btn btn-outline uppercase">Add to cart</button>
+              <button className="btn btn-outline border-0 border-b-4 bg-slate-200 border-orange-400">Add to cart</button>
             </div>
           </div>
         </div>
