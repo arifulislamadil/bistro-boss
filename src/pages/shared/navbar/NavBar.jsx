@@ -1,19 +1,20 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { FaShoppingCart } from "react-icons/fa";
 
 const NavBar = () => {
-  const {user,logOut}=useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext);
 
-
-  const handleLogOut=()=>{
+  const handleLogOut = () => {
     logOut()
-    .then(result=>{
-      console.log(result);
-    }).catch(error=>{
-      console.log(error.message);
-    })
-  }
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   const navOptions = (
     <>
       <li>
@@ -26,19 +27,39 @@ const NavBar = () => {
         <Link to="/order">Order Food</Link>
       </li>
       <li>
+        <Link to="/secret">Secret</Link>
+      </li>
+      <li>
         <a>Contact</a>
       </li>
-      {
-        user? <>
-        <li>
-        <Link to="/login"><button >Log out</button></Link>
-      </li>
-        </>:
       <li>
-        <Link to="/login">Login</Link>
+        <Link to="/">
+        <button className="btn">
+         <FaShoppingCart></FaShoppingCart>
+          <div className="badge badge-secondary">0</div>
+        </button>
+        </Link>
       </li>
-      }
-      
+
+      {user ? (
+        <>
+          <span>{user.displayName}</span>
+          <img
+            style={{ width: "50px", height: "50px", borderRadius: "500%" }}
+            src={user.photoURL}
+            alt=""
+          />
+          <li>
+            <Link to="/login" onClick={handleLogOut}>
+              <button>Log out</button>
+            </Link>
+          </li>
+        </>
+      ) : (
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      )}
     </>
   );
   return (
@@ -66,18 +87,18 @@ const NavBar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-                {navOptions}
+              {navOptions}
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">Bistro Boss</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-           {navOptions}
-          </ul>
+          <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
+        
         <div className="navbar-end">
-          <a className="btn">login</a>
+      
+          <a className="btn">user</a>
         </div>
       </div>
     </>
