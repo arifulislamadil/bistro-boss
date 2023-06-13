@@ -1,30 +1,37 @@
 import React from "react";
 import { FaCalendar, FaHamburger, FaHome, FaShoppingCart, FaThermometerFull, FaWallet } from "react-icons/fa";
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
+import "./dashboard.css"
+import userCart from "../hooks/useCart";
+
 
 const Dashboard = () => {
+  const [cart] = userCart();
   return (
     <div>
-      <div className="drawer lg:drawer-open">
+      <div className="drawer lg:drawer-open test">
   <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-  <div className="drawer-content flex flex-col items-center justify-center">
+  <div className="drawer-content flex flex-col ">
+  <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
   <Outlet/>
-    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+   
   
   </div> 
-  <div className="drawer-side">
+  <div iv className="drawer-side bg-[#D1A054]">
     <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
-    <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-      <li><Link to="/"><FaHome></FaHome> Home</Link></li>
-      <li><Link to="/dashboard/mycart"><FaShoppingCart></FaShoppingCart> My Cart</Link></li>
-      <li><Link to="/"><FaWallet></FaWallet> Wallet Historys</Link></li>
-      <li><Link to="/"><FaCalendar></FaCalendar> Reservation </Link></li>
+    <ul className="menu p-4 w-80 h-full">
+      <li><NavLink to="/dashboard/home"><FaHome></FaHome> Home</NavLink></li>
+      <li><NavLink to="/dashboard/reservation"><FaCalendar></FaCalendar> Reservation </NavLink></li>
+      <li><NavLink to="/dashboard/history"><FaWallet></FaWallet> Payment History</NavLink></li>
+      <li><NavLink to="/dashboard/mycart"><FaShoppingCart></FaShoppingCart> My Cart
+      <div className="badge badge-secondary"> + {cart?.length || 0}</div>
+      </NavLink></li>
       <div className="divider"></div>
-      <li><Link to="/"><FaHome></FaHome> Home</Link></li>
-      <li><Link to="/menu"><GiHamburgerMenu></GiHamburgerMenu> Menu </Link></li>
-      <li><Link to="/order/salad"><FaWallet></FaWallet> Wallet Historys</Link></li>
-      <li><Link to="/"><FaCalendar></FaCalendar> Reservation </Link></li>
+      <li><NavLink to="/"><FaHome></FaHome> Home</NavLink></li>
+      <li><NavLink to="/menu"><GiHamburgerMenu></GiHamburgerMenu> Menu </NavLink></li>
+      <li><NavLink to="/order/salad"><FaWallet></FaWallet> Wallet Historys</NavLink></li>
+      <li><NavLink to="/"><FaCalendar></FaCalendar> Reservation </NavLink></li>
 
     </ul>
   

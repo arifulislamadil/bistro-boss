@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const {
@@ -19,20 +20,36 @@ const SignUp = () => {
   const onSubmit = (data) => {
     createUser(data.email, data.password)
     .then(result=>{
+
         const loggedUser = result.user;
         console.log(loggedUser);
         updateUserProfile(data.name, data.photoURL)
         .then(result=>{
+          const saveUser = {name: data.name, email:data.email}
           console.log(result);
-          reset()
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'successfully user registered',
-            showConfirmButton: false,
-            timer: 1500
-          });
-          navigate("/")
+          fetch("http://localhost:5000/users",{
+            method: "POST",
+            headers:{
+              'content-type': 'application/json'
+            },
+            body:JSON.stringify(saveUser)
+          })
+          .then(res=>res.json())
+          .then(data=>{
+            console.log(data)
+            if(data.insertedId){
+              reset()
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'successfully user registered',
+                showConfirmButton: false,
+                timer: 1500
+              });
+              navigate("/")
+            }
+          })
+         
         }).catch(err=>{ 
           console.log(err);
         })
@@ -152,11 +169,13 @@ const SignUp = () => {
                   ></input>
                 </div>
               </form>
+
               <p className="text-center text-xl pb-4">
                 <small>
                   Already have an account then <Link className="text-orange-600" to="/login">Login?</Link>
                 </small>
               </p>
+              <SocialLogin/>
             </div>
           </div>
         </div>
