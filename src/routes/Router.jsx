@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import Secret from "../pages/shared/Secret/Secret";
 import Dashboard from "../layout/Dashboard";
 import MyCart from "../pages/Dashboard/MyCart/MyCart";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 
 
 
@@ -58,6 +59,10 @@ import MyCart from "../pages/Dashboard/MyCart/MyCart";
         {
           path: "mycart",
           element:<MyCart/>
+        },
+        {
+          path: "allusers",
+          element:<AllUsers/>
         }
       ]
     }

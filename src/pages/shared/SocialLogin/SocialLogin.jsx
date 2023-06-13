@@ -29,21 +29,9 @@ const SocialLogin = () => {
                 body:JSON.stringify(saveUser)
               })
               .then(res=>res.json())
-              .then(data=>{
-                console.log(data)
-                if(data.insertedId){
-                
+              .then(()=>{
                     navigate(from, {replace: true});
-                }
               })
-
-
-
-
-
-
-
-
             
         }).catch(error=>{
             console.log(error.message);

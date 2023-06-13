@@ -37,7 +37,7 @@ const SignUp = () => {
           .then(res=>res.json())
           .then(data=>{
             console.log(data)
-            if(data.insertedId){
+           
               reset()
               Swal.fire({
                 position: 'top-end',
@@ -47,7 +47,7 @@ const SignUp = () => {
                 timer: 1500
               });
               navigate("/")
-            }
+            
           })
          
         }).catch(err=>{ 
