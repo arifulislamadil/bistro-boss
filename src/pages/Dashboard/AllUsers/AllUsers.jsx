@@ -18,25 +18,15 @@ const handleMakeAdmin=(user)=>{
     .then(res=>res.json())
     .then(data => {
         console.log(data)
+        refetch();
         if(data.modifiedCount){
-            Swal.fire({
-                title: `${user.name} is an admin now!`,
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-              }).then((result) => {
-                refetch();
-                if (result.isConfirmed) {
-                  Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                  )
-                }
-              })
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `${user.name} is an Admin now`,
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
     })
 }
@@ -45,7 +35,6 @@ const handleMakeAdmin=(user)=>{
 const handleDelete =(id)=>{
 fetch(`http://localhost:5000/users/${id}`,{
     method: 'DELETE',
-
 }).then(res=>res.json())
 .then(data=>{
     Swal.fire({
@@ -68,10 +57,6 @@ fetch(`http://localhost:5000/users/${id}`,{
       })
 })
 }
-
-
-
-
 
 
   return (

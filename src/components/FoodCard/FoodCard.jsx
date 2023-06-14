@@ -13,7 +13,6 @@ const [,refetch]= userCart()
     const location = useLocation()
 
     const handleAddToCart = (item)=>{
-      console.log(item);
       if(user && user.email){
         const cartItem = {menuItemId: _id,name,image,price, email:user?.email}
         fetch("http://localhost:5000/carts",{
