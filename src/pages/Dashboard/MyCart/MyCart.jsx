@@ -1,8 +1,10 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import userCart from "../../../hooks/useCart";
-import { FaHome, FaRegEdit, FaTrash } from "react-icons/fa";
+import {FaRegEdit, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
+
+
 
 const MyCart = () => {
   const [cart,refetch] = userCart();
@@ -109,3 +111,6 @@ const handleDelete =(item)=>{
 };
 
 export default MyCart;
+
+
+

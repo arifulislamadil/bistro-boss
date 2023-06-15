@@ -9,9 +9,10 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Secret from "../pages/shared/Secret/Secret";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import AddItem from "../pages/Dashboard/AddItem/AddItem";
 import Dashboard from "../layout/Dashboard";
 import MyCart from "../pages/Dashboard/MyCart/MyCart";
-import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 
 
 
@@ -56,13 +57,18 @@ import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
       path: "/dashboard",
       element:<PrivateRoute><Dashboard/></PrivateRoute>,
       children:[
+        
+        {
+          path: "allusers",
+          element:<AllUsers/>
+        },
         {
           path: "mycart",
           element:<MyCart/>
         },
         {
-          path: "allusers",
-          element:<AllUsers/>
+          path: "addItem",
+          element:<AddItem/>
         }
       ]
     }
